@@ -1,10 +1,43 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Welcome to the game, Slay the Bugs! (Computer science edition)
 
-## Available Scripts
+# Yup! You guessed it, this game is all about computer bugs and how to squash them, sometimes hackers show up and try to ruin your day with DDOS attacks, or similar, and you go through the game collecting amazing cards that have helpful abilities to thwart your enemies. 
 
-In the project directory, you can run:
+# Technology: 'll be using React, HTML, CSS, JS, and other libraries such as draggable elements, and sounds from .org, and free AI images. 
+
+# gameplay loop:
+
+### Dev plan: A rough overview of how to build this slay the spire clone 
+
+:white_large_square Build a Splash page (landing page) with 4 options (Play, View Collection, High scores, Manual)
+
+:white_check_mark Generate AI images for background images, cards, characters, player avatars, and enemies. 
+
+:white_large_square Create basic main page of game, showing nav ba at top with their loot, health bar, money etc. This is header and footer component. 
+
+:white_large_square Create a deck and Create all the cards for the player to acquire: Decks are just a custom ArrayList component of cards with simple methods like getTopCard(), shuffle(), containsPowers(), and each card has a cost (0-3), and an effect and/or attack ability, and a rarity value (Common, Uncommon, Rare, Epic, Legendary)
+
+:white_large_square Implement the turn system: A turn is made up of discarding your hand, enemies utilize attacks (these are actions in a queue), draw some cards, just handle all the things that occur in a Queue of actions that need to be executed sequentially.
+
+:white_large_square Draw random cards from the deck every turn: The deck is shuffled at the start of the game- draw the top card of the deck. When combat starts, we create a copy of your deck and shuffle it using Collections.Shuffle and make that the draw pile. This is to maintain the immutability of your original deck, as some cards are curses and add -1 unplayable cards to your hand clogging it up. Some of these cards don’t persist to the next enemy match. 
+
+:white_large_square Make cards move (draggable react Library maybe?): React spring or something similar with transform values x,y and determine a hit box of enemy to trigger the card effect and discard the card from hand. 
+
+:white_large_square Make cards work: each card is a separate object (JSON values). It holds some basic info like rarity, type, cost, and power(attack dmg), If I add modifiers then dynamic values like * multiplicative values modifier. block cards (these are affected by Powers). 
+
+:white_large_square Create a use() function which is where the card has all its abilities. 
+
+:white_large_square Determine winning game state and allocate winnings from chests have player beagle to click on the items or just show them and move them to inventory top nav bar shows loot collected. 
+
+:white_large_square stretch goals: Build a tree of locations with 3 starting points for teh player to choose which path they want to go, with nodes of enemies, chests, and random locations mysterious locations etc. 
+
+:white_large_square Build a SQL db with user login and password, and high scores they've had, and card configurations they got. 
+
+:white_large_square Generate procedural locations and procedural bosses with amazing skills. 
+
+
+
+
 
 ### `npm start`
 
@@ -39,28 +72,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
+#
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
@@ -68,3 +80,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
