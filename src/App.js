@@ -1,14 +1,17 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-import Grid from './components/Grid';
 
-const App = () => {
-  return (
-    <div>
-      <NavBar />
-      <Grid />
-    </div>
-  );
-};
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { Routes, Route, Router } from "react-router-dom";
+import HomePage from './pages/HomePage';
 
+    function App() {
+      return (
+        <div className="App">
+          <Header />
+         
+          <Footer />
+        </div>
+      );
+    }
+  
 export default App;

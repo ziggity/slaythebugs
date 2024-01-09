@@ -1,9 +1,9 @@
 
-## Welcome to the game, Slay the Bugs! (Computer science edition)
+## Welcome to the game, Slay the Hacker! (Computer science edition)
 
-# Yup! You guessed it, this game is all about computer bugs and how to squash them, sometimes hackers show up and try to ruin your day with DDOS attacks, or similar, and you go through the game collecting amazing cards that have helpful abilities to thwart your enemies. 
+# Yup! You guessed it, this game is all about how to stop computer hacks and how to squash them, stop them in their tracks, hackers show up and try to ruin your day with DDOS attacks, or similar, and you go through the game collecting amazing cards that have helpful abilities to thwart your enemies. 
 
-# Technology: 'll be using React, HTML, CSS, JS, and other libraries such as draggable elements, and sounds from .org, and free AI images. 
+# Technology: I'll be using React, HTML, CSS, JS, and other libraries such as draggable elements, and sounds from .org, and free AI images. 
 
 # Dev plan: A rough overview of how to build this slay the spire clone 
 
@@ -13,9 +13,9 @@
 
 :white_large_square: Create basic main page of game, showing nav ba at top with their loot, health bar, money etc. This is header and footer component. 
 
-:white_large_square:Create a deck and Create all the cards for the player to acquire: Decks are just a custom ArrayList component of cards with simple methods like getTopCard(), shuffle(), containsPowers(), and each card has a cost (0-3), and an effect and/or attack ability, and a rarity value (Common, Uncommon, Rare, Epic, Legendary)
+:white_large_square: Create a deck and Create all the cards for the player to acquire: Decks are just a custom ArrayList component of cards with simple methods like getTopCard(), shuffle(), containsPowers(), and each card has a cost (0-3), and an effect and/or attack ability, and a rarity value (Common, Uncommon, Rare, Epic, Legendary)
 
-:white_large_square:Implement the turn system: A turn is made up of discarding your hand, enemies utilize attacks (these are actions in a queue), draw some cards, just handle all the things that occur in a Queue of actions that need to be executed sequentially.
+:white_large_square: Implement the turn system: A turn is made up of discarding your hand, enemies utilize attacks (these are actions in a queue), draw some cards, just handle all the things that occur in a Queue of actions that need to be executed sequentially.
 
 :white_large_square: Draw random cards from the deck every turn: The deck is shuffled at the start of the game- draw the top card of the deck. When combat starts, we create a copy of your deck and shuffle it using Collections.Shuffle and make that the draw pile. This is to maintain the immutability of your original deck, as some cards are curses and add -1 unplayable cards to your hand clogging it up. Some of these cards don’t persist to the next enemy match. 
 
