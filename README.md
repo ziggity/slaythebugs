@@ -1,7 +1,37 @@
 
 ## Welcome to the game, Slay the Hacker! (Computer science edition)
+ 
+#  This is game is all about how to stop computer hacks and how to squash them, stop them in their tracks, hackers show up and try to ruin your day with DDOS attacks, or similar, and you go through the game collecting amazing cards that have helpful abilities to thwart your enemies such as a trojan worm, or hackerman. Some cards we start with are Firewall (+5 block value to player health) and hackertools (lockpicking set which attempts to unlock server door to hacker's location +6 damage to enemey health pool). 
 
-# Yup! You guessed it, this game is all about how to stop computer hacks and how to squash them, stop them in their tracks, hackers show up and try to ruin your day with DDOS attacks, or similar, and you go through the game collecting amazing cards that have helpful abilities to thwart your enemies. 
+Gameplay loop and logic: 
+
+Components:
+Game Board Component:
+
+Manages the overall game state.
+Renders the player's hand, deck, and other game elements.
+Handles the game's turn logic.
+
+Card Component:
+
+Represents an individual card.
+Displays card information (e.g., image, name, stats).
+Handles interactions (e.g., clicking to play or discard).
+State and Logic:
+Game State:
+
+Player's deck: Array of cards.
+Player's hand: Array of cards.
+Discard pile: Array of discarded cards.
+
+Game Logic:
+
+Initialize the game with a deck of cards.
+Draw 5 cards at the start of each turn.
+Allow the player to play or discard cards.
+Shuffle the discard pile into the deck when the deck is empty.
+Continue the game until a win/lose condition is met.
+
 
 # Technology: I'll be using React, HTML, CSS, JS, and other libraries such as draggable elements, and sounds from .org, and free AI images. 
 
