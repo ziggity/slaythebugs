@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import Card from './Card';
-import Firewall from '../cards/firewall';
-import Hackertools from '../cards/hackertools';
+import React, { useState } from "react";
+import Firewall from "../cards/firewall";
+import Hackertools from "../cards/hackertools";
+import { useDrop } from "react-dnd";
+import DraggableCard from "./DraggableCard";
 
 const DeckOfCards = () => {
   const cardList = [Firewall, Hackertools];
 
   const [deckOfCards, setDeckOfCards] = useState(() => generateDeck());
-  const [hand, setHand] = useState([]);
+  const [handOfCards, setHand] = useState([]);
 
   function generateDeck() {
     const deck = [];
@@ -17,6 +18,15 @@ const DeckOfCards = () => {
     }
     return deck;
   }
+  const [{ isOver }, drop] = useDrop({
+    accept: "CARD",
+    drop: (item) => {
+      console.log("Card dropped:", item.card.name);
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
 
   const drawHand = () => {
     setHand(deckOfCards.slice(0, 5));
@@ -25,28 +35,39 @@ const DeckOfCards = () => {
 
   return (
     <div>
-    <div className="hand">
-      <h2>Your Hand</h2>
+      <div className="hand">
+        <h2>Your Hand</h2>
+        <div
+          className="hand-cards"
+          style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+        >
+          {handOfCards.map((card) => (
+            <DraggableCard key={card.id} card={card} />
+          ))}
+        </div>
+        <button onClick={drawHand}>Draw Hand</button>
+      </div>
+      <h2>Your Deck</h2>
       <div
-        className="hand-cards"
+        className="deck-cards"
         style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
       >
-        {hand.map((card, index) => (
-          <Card key={index} card={card} />
+        {handOfCards.map((card) => (
+          <DraggableCard key={card.id} card={card} />
         ))}
       </div>
-      <button onClick={drawHand}>Draw Hand</button>
+      <div
+        className="drop-target"
+        ref={drop}
+        style={{
+          width: "300px",
+          height: "500px",
+          border: isOver ? "15px dashed green" : "15px dashed black",
+        }}
+      >
+        Drop Target (Right Side)
+      </div>
     </div>
-    <h2>Your Deck</h2>
-    <div
-      className="deck-cards"
-      style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
-    >
-      {deckOfCards.map((card, index) => (
-        <Card key={index} card={card} />
-      ))}
-    </div>
-  </div>
   );
 };
 

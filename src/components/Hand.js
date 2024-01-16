@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import DraggableCard from "./DraggableCard";
 import Firewall from "../cards/firewall";
 import Hackertools from "../cards/hackertools";
 
@@ -34,7 +34,7 @@ const DeckOfCards = () => {
           style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
         >
           {hand.map((card, index) => (
-            <Card key={index} card={card} />
+            <DraggableCard card={card} />
           ))}
         </div>
         <button onClick={drawHand}>Draw Hand</button>
@@ -45,11 +45,10 @@ const DeckOfCards = () => {
         style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
       >
         {deckOfCards.map((card, index) => (
-          <Card key={index} card={card} />
+          <DraggableCard  card={card} />
         ))}
       </div>
     </div>
   );
 };
 
-export default DeckOfCards;
