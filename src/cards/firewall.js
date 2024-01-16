@@ -5,8 +5,7 @@ const Firewall =  {
 	target: 'player',
 	block: 5,
 	description: 'Gain 5 Block.',
-	image: 'src/assets/images/firewall.jpeg',
-}
+	image: 'https://i.ibb.co/g3JCzhn/firewall.jpg'}
 
 export const upgrade = (card) => {
 	return {

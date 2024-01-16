@@ -1,28 +1,50 @@
-import React from 'react';
-import Card from './Card'; 
-import Firewall from '../cards/firewall';
-import Hackertools from '../cards/hackertools';
+import React, { useState } from "react";
+import Card from "./Card";
+import Firewall from "../cards/firewall";
+import Hackertools from "../cards/hackertools";
 
-const Hand = () => {
-  const cardList = [
-    
-    Firewall, Hackertools
-   
-  ];
+const DeckOfCards = () => {
+  const cardList = [Firewall, Hackertools];
 
-  // Generate a hand of 12 cards
-  const handOfCards = [];
-  for (let i = 0; i < 12; i++) {
-    // Assuming you want to repeat the cards in a loop
-    const card = cardList[i % cardList.length];
-    handOfCards.push(card);
+  const [deckOfCards, setDeckOfCards] = useState(generateDeck());
+  const [hand, setHand] = useState([]);
+
+  function generateDeck() {
+    const deck = [];
+    for (let i = 0; i < 12; i++) {
+      const card = cardList[i % cardList.length];
+      deck.push(card);
+    }
+    return deck;
   }
 
+  const drawHand = () => {
+    const drawnCards = deckOfCards.slice(0, 5);
+    const remainingDeck = deckOfCards.slice(5);
+    setHand(drawnCards);
+    setDeckOfCards(remainingDeck);
+  };
+
   return (
-    <div className="hand">
-      <h2>Your Hand</h2>
-      <div className="hand-cards">
-        {handOfCards.map((card, index) => (
+    <div>
+      <div className="hand">
+        <h2>Your Hand</h2>
+        <div
+          className="hand-cards"
+          style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+        >
+          {hand.map((card, index) => (
+            <Card key={index} card={card} />
+          ))}
+        </div>
+        <button onClick={drawHand}>Draw Hand</button>
+      </div>
+      <h2>Your Deck</h2>
+      <div
+        className="deck-cards"
+        style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+      >
+        {deckOfCards.map((card, index) => (
           <Card key={index} card={card} />
         ))}
       </div>
@@ -30,4 +52,4 @@ const Hand = () => {
   );
 };
 
-export default Hand;
+export default DeckOfCards;

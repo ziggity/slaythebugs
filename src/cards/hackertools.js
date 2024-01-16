@@ -5,8 +5,7 @@ const Hackertools = {
 	target: 'enemy',
 	damage: 6,
 	description: 'Deal 6 Damage.',
-	image: 'src/assets/images/hackertools.png',
-}
+	image: 'https://i.ibb.co/PrhPHx9/hackertools.png',}
 
 export const upgrade = (card) => {
 	return {
