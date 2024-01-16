@@ -1,4 +1,4 @@
-export default {
+const Hackertools = {
 	name: 'Hackertools',
 	type: 'attack',
 	energy: 1,
@@ -15,3 +15,5 @@ export const upgrade = (card) => {
 		description: 'Deal 9 Damage.',
 	}
 }
+
+export default Hackertools

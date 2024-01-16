@@ -1,4 +1,4 @@
-export default {
+const Firewall =  {
 	name: 'Firewall',
 	type: 'skill',
 	energy: 1,
@@ -15,3 +15,5 @@ export const upgrade = (card) => {
 		description: 'Gain 8 Block.',
 	}
 }
+
+export default Firewall

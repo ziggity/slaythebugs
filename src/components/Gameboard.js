@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
+const initializeDeck = () => {
+    const card1 = {
+      name: 'Firewall',
+      type: 'skill',
+      energy: 1,
+      target: 'player',
+      block: 5,
+      description: 'Gain 5 Block.',
+      image: 'src/assets/images/firewall.jpeg',
+    };
+};
+
 const GameBoard = () => {
   const [deck, setDeck] = useState(initializeDeck());
   const [hand, setHand] = useState([]);
@@ -10,9 +22,7 @@ const GameBoard = () => {
     drawCards(5);
   }, []); // Draw 5 cards at the start
 
-  const initializeDeck = () => {
-  
-  };
+    
 
   const shuffleDeck = () => {
 
@@ -40,11 +50,9 @@ const GameBoard = () => {
       </div>
       <div>
         <h2>Deck</h2>
-        {/* Display deck information */}
       </div>
       <div>
         <h2>Discard Pile</h2>
-        {/* Display discard pile information */}
       </div>
       <button onClick={endTurn}>End Turn</button>
     </div>

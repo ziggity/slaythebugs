@@ -1,23 +1,18 @@
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Navbar from './components/NavBar';
+import React from "react";
+import PlayMat from "./components/PlayMat";
 import "./App.css";
-import ControlledHealthBar from './components/ControlledHealthBar';
-import Deck from './components/Deck';
-    function App() {
-      return (
-        <div className="App">
-       <div className={styles.container}>
-      <Deck />
+import GameBoard from "./components/Gameboard";
+import UserLoginForm from "./user/UserLoginForm";
+import Hand from "./components/Hand";
+
+function App() {
+  return (
+    <div className="App">
+      <UserLoginForm name="userlogin" />
+      <PlayMat />
+      <Hand />
     </div>
-          <Header />
-          <Navbar />
-          <ControlledHealthBar />
-          
-          <Footer />
-        </div>
-      );
-    }
-  
+  );
+}
+
 export default App;

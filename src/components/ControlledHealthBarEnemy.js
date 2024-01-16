@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Container, Card } from "reactstrap";
-const HealthBar = ({ maxHp = 100, hp = 100 } = {}) => {
-  const barWidth = (hp / maxHp) * 100;
+const HealthBare = ({ maxHpe = 100, hpe = 100 } = {}) => {
+  const barWidth = (hpe / maxHpe) * 100;
 
   return (
     <div>
-      <div className="health-bar">
+      <div className="health-bar2">
         <Card>
         <div className="bar flex" style={{ width: `${barWidth}%` }}></div>
         <div className="hit" style={{ width: `${0}%` }}></div>
@@ -18,7 +18,7 @@ const HealthBar = ({ maxHp = 100, hp = 100 } = {}) => {
             textAlign: "center",
           }}
         >
-          {hp} / {maxHp}
+          {hpe} / {maxHpe}
         </div>
         </Card>
       </div>
@@ -28,17 +28,17 @@ const HealthBar = ({ maxHp = 100, hp = 100 } = {}) => {
   );
 };
 
-const ControlledHealthBar = () => {
-  const maxHp = 100;
-  const [hp, SetHp] = useState(maxHp);
+const ControlledHealthBarEnemy = () => {
+  const maxHpe = 100;
+  const [hpe, SetHpe] = useState(maxHpe);
   return (
     <div>
-      <HealthBar hp={hp} maxHp={maxHp} />
+      <HealthBare hpe={hpe} maxHpe={maxHpe} />
       <button
         className="damage random"
         onClick={() => {
-          var damage = Math.floor(Math.random() * maxHp);
-          SetHp(Math.max(0, hp - damage));
+          var damage = Math.floor(Math.random() * maxHpe);
+          SetHpe(Math.max(0, hpe - damage));
         }}
       >
         hit random
@@ -47,7 +47,7 @@ const ControlledHealthBar = () => {
       <button
         className="reset"
         onClick={() => {
-          SetHp(maxHp);
+          SetHpe(maxHpe);
         }}
       >
         reset
@@ -56,4 +56,4 @@ const ControlledHealthBar = () => {
   );
 };
 
-export default ControlledHealthBar;
+export default ControlledHealthBarEnemy;
