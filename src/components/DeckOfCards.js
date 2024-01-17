@@ -3,9 +3,12 @@ import Firewall from "../cards/firewall";
 import Hackertools from "../cards/hackertools";
 import { useDrop } from "react-dnd";
 import DraggableCard from "./DraggableCard";
-
+import PhishingAttempt from "../cards/phishingattempt";
+import AFK from "../cards/afk";
+import Wipedown from "../cards/wipedown";
+import DeployZeroDay from "../cards/deployZeroDay";
 const DeckOfCards = () => {
-  const cardList = [Firewall, Hackertools];
+  const cardList = [Firewall, Hackertools, PhishingAttempt, AFK,DeployZeroDay, Wipedown];
 
   const [deckOfCards, setDeckOfCards] = useState(() => generateDeck());
   const [handOfCards, setHand] = useState([]);
