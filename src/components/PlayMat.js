@@ -4,8 +4,7 @@ import backgroundImage from "/Users/eva/Desktop/my-game/src/assets/images/server
 import React, { useState, useEffect } from "react";
 import EnemyDropTarget from "./EnemyDropTarget";
 import PlayerDropTarget from "./PlayerDropTarget";
-import { Modal } from "reactstrap";
-import DraggableCard from "./DraggableCard";
+import GameModal from "./GameModal";
 
 const appStyle = {
   backgroundImage: `url(${backgroundImage})`,
@@ -18,32 +17,12 @@ const appStyle = {
   justifyContent: "center",
   padding: "5px",
 };
-const ChestModal = ({ cards, onSelect }) => {
-  return (
-    <Modal isOpen={true}>
-      <h2>
-        Choose a few items from the chest to add to the deck or help your
-        journey to fight!
-      </h2>
-      <div>
-        {cards.map((card, index) => (
-          <DraggableCard
-            key={index}
-            card={card}
-            onClick={() => onSelect(card)}
-          />
-        ))}
-      </div>
-    </Modal>
-  );
-};
-const PlayMat = ({ energy, setEnergy, handleEndTurn }) => {
-  const [health, setHealth] = useState(Math.floor(Math.random(20) * 12));
+// set the health of player and energy to 3,  and enemy health 
+const PlayMat = ({ energy, setEnergy, handleEndTurn, updateDeck }) => {
+  const [health, setHealth] = useState(Math.floor(Math.random(15) * 12));
   const [playerHealth, setPlayerHealth] = useState(
-    Math.floor(Math.random(20) * 75)
+    Math.floor(Math.random() * 55)
   );
-  const [showChestModal, setShowChestModal] = useState(false);
-
   const HandlePlayerCardDrop = (card) => {
     console.log("Card dropped on Player:", card);
     if (energy <= 0) {
@@ -53,22 +32,23 @@ const PlayMat = ({ energy, setEnergy, handleEndTurn }) => {
       setPlayerHealth((prevPHealth) => prevPHealth + 5);
     }
   };
-  const handleEnemyDefeat = () => {
-    setHealth(0);
-    setShowChestModal(true);
-  };
 
-  const handleCardSelection = (selectedCard) => {
-    console.log("Selected Card:", selectedCard);
-    setShowChestModal(false);
+  const handleEnemyDefeat = () => {
+    if (health > 0) {
+      setHealth(0);
+    }
   };
 
   useEffect(() => {
     if (health <= 0) {
-      setHealth(Math.floor(Math.random(20) * 12));
-      setShowChestModal(true); 
+      setHealth(Math.floor(Math.random() * 12) + 1);
     }
   }, [health]);
+
+  const handleCardSelection = (selectedCard) => {
+    console.log("Selected Card:", selectedCard);
+    updateDeck((prevDeck) => [...prevDeck, selectedCard]);
+  }
 
   const HandleCardDrop = (card) => {
     console.log("Card dropped on Enemy:", card);
@@ -110,18 +90,10 @@ const PlayMat = ({ energy, setEnergy, handleEndTurn }) => {
             <EnemyDropTarget onDrop={HandleCardDrop} />
           </div>
         </div>
-        <button onClick={handleEnemyDefeat}>Defeat Enemy</button>
-        <ChestModal
-          cards={[
-            "PhishingAttempt",
+        <button onClick={handleEnemyDefeat}>End battle</button>
+        <GameModal cardList={ ["PhishingAttempt",
             "AFK",
-            "CronJobHelperBot",
-            "URLSpoof",
-            "Social Engineering",
-            "WipedownPC",
-          ]}
-          onSelect={handleCardSelection}
-        />
+            "WipedownPC"]} handleCardSelection={handleCardSelection} />
       </main>
     </div>
   );
