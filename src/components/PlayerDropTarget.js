@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDrop } from 'react-dnd';
-const EnemyDropTarget = ({ onDrop }) => {
+const PlayerDropTarget = ({ onDrop }) => {
   const [{ isOver }, drop] = useDrop({
     accept: 'CARD', 
     drop: (item) => onDrop(item.card), 
@@ -13,14 +13,14 @@ const EnemyDropTarget = ({ onDrop }) => {
     <div
       ref={drop}
       style={{
-        border: `8px dotted ${isOver ? 'red' : 'black'}`, 
+        border: `8px dotted ${isOver ? 'red' : 'white'}`, 
         padding: '1px',
         margin: '1px',
       }}
     >
-      <h2>Enemy virus</h2>
+      <h2>Player 1</h2>
     </div>
   );
 };
 
-export default EnemyDropTarget;
+export default PlayerDropTarget;

@@ -60,12 +60,11 @@ const DeckOfCards = () => {
         className="drop-target"
         ref={drop}
         style={{
-          width: "300px",
-          height: "500px",
-          border: isOver ? "15px dashed green" : "15px dashed black",
+          width: "75px",
+          height: "125px",
+          border: isOver ? "15px dashed green" : "15px dashed blue",
         }}
       >
-        Drop Target (Right Side)
       </div>
     </div>
   );

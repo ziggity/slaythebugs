@@ -37,8 +37,7 @@ const ControlledHealthBarEnemy = () => {
       <button
         className="damage random"
         onClick={() => {
-          var damage = Math.floor(Math.random() * maxHpe);
-          SetHpe(Math.max(0, hpe - damage));
+          SetHpe(Math.max(0, hpe - 6));
         }}
       >
         hit random
